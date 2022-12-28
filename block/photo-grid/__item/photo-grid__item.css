@@ -1,8 +1,0 @@
-.photo-grid__item {
-  display: grid;
-  line-height: 0;
-  border-radius: 10px;
-  background-color: white;
-  overflow: hidden;
-  grid-template-rows: 1fr 80px;
-}

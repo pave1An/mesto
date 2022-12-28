@@ -6,7 +6,7 @@
   <title>Место</title>
   <link rel="stylesheet" href="./pages/index.css">
 </head>
-<body class = "page">
+<body class="page">
   <header class="header">
     <img class="header__logo" src="./images/header-logo.svg" alt="логотип Место">
   </header>
@@ -15,72 +15,74 @@
       <img class="profile__avatar" src="./images/profile-avatar.jpg" alt="аватар профиля">
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button class="profile__edit-btn" name="profile-edit">
+          <button type="button" class="profile__edit-btn" name="profile-edit" aria-label="Редактировать профиль">
           </button>
           <p class="profile__job">Исследователь океана</p>
         </div>
-      <button class="profile__add-btn" name="profile-add">
+      <button type="button" class="profile__add-btn" name="profile-add" aria-label="Добавить фото">
       </button>
     </section>
-    <section class="popup">
-      <form action="#" class="popup__container" name="edit-form">
-        <button type="button" class="popup__close-btn" name="form-close">
+    <div class="popup">
+      <div class="popup__container">
+        <button type="button" class="popup__close-btn" name="form-close" aria-label="Закрыть">
         </button>
-        <p class="popup__title">Редактировать профиль</p>
-        <div class="popup__input">
-          <input type="text" class="popup__input-text popup__input-text_type_name" name="name" value="Жак-Ив Кусто">
-          <input type="text" class="popup__input-text popup__input-text_type_job" name="job" value="Исследователь океана">
-        </div>
-        <button type="submit" class="popup__submit-btn" name="form-submit">Сохранить</button>
-      </form>
-    </section>
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <form action="#" class="popup__form" name="edit-form">
+          <fieldset class="popup__input">
+            <input type="text" class="popup__input-text popup__input-text_type_name" name="name" value="Жак-Ив Кусто">
+            <input type="text" class="popup__input-text popup__input-text_type_job" name="job" value="Исследователь океана">
+          </fieldset>
+          <button type="submit" class="popup__submit-btn" name="form-submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
     <section class="photo-grid">
       <ul class="photo-grid__list">
-        <li class="photo-grid__item">
-          <img src="./images/photo-grid-les.jpg" alt="хвойный лес, берег" class="photo-grid__image">
-          <div class="photo-grid__bottom">
-            <h2 class="photo-grid__title">Хвойный лес</h2>
-            <button class="photo-grid__like" name="like">
+        <li class="element">
+          <img src="./images/element-les.jpg" alt="хвойный лес, берег" class="element__image">
+          <div class="element__bottom">
+            <h2 class="element__title">Хвойный лес</h2>
+            <button type="button" class="element__like" name="like" aria-label="Лайк">
             </button>
           </div>
         </li>
-        <li class="photo-grid__item">
-          <img src="./images/photo-grid-skali.jpg" alt="острые, желтые скалы" class="photo-grid__image">
-          <div class="photo-grid__bottom">
-            <h2 class="photo-grid__title">Острые скалы</h2>
-            <button class="photo-grid__like" name="like">
+        <li class="element">
+          <img src="./images/element-skali.jpg" alt="острые, желтые скалы" class="element__image">
+          <div class="element__bottom">
+            <h2 class="element__title">Острые скалы</h2>
+            <button type="button" class="element__like" name="like" aria-label="Лайк">
             </button>
           </div>
         </li>
-        <li class="photo-grid__item">
-          <img src="./images/photo-grid-tropa.jpg" alt="тропа среди гор" class="photo-grid__image">
-          <div class="photo-grid__bottom">
-            <h2 class="photo-grid__title">Горная тропа</h2>
-            <button class="photo-grid__like" name="like">
+        <li class="element">
+          <img src="./images/element-tropa.jpg" alt="тропа среди гор" class="element__image">
+          <div class="element__bottom">
+            <h2 class="element__title">Горная тропа</h2>
+            <button type="button" class="element__like" name="like" aria-label="Лайк">
             </button>
           </div>
         </li>
-        <li class="photo-grid__item">
-          <img src="./images/photo-grid-pustinya.jpg" alt="маленькие скалы в пустыне" class="photo-grid__image">
-          <div class="photo-grid__bottom">
-            <h2 class="photo-grid__title">Скалистая пустыня</h2>
-            <button class="photo-grid__like" name="like">
+        <li class="element">
+          <img src="./images/element-pustinya.jpg" alt="маленькие скалы в пустыне" class="element__image">
+          <div class="element__bottom">
+            <h2 class="element__title">Скалистая пустыня</h2>
+            <button type="button" class="element__like" name="like" aria-label="Лайк">
             </button>
           </div>
         </li>
-        <li class="photo-grid__item">
-          <img src="./images/photo-grid-utyos.jpg" alt="утес на берегу" class="photo-grid__image">
-          <div class="photo-grid__bottom">
-            <h2 class="photo-grid__title">Утес</h2>
-            <button class="photo-grid__like" name="like">
+        <li class="element">
+          <img src="./images/element-utyos.jpg" alt="утес на берегу" class="element__image">
+          <div class="element__bottom">
+            <h2 class="element__title">Утес</h2>
+            <button type="button" class="element__like" name="like" aria-label="Лайк">
             </button>
           </div>
         </li>
-        <li class="photo-grid__item">
-          <img src="./images/photo-grid-baikal.jpg" alt="берег Байкала" class="photo-grid__image">
-          <div class="photo-grid__bottom">
-            <h2 class="photo-grid__title">Байкал</h2>
-            <button class="photo-grid__like" name="like">
+        <li class="element">
+          <img src="./images/element-baikal.jpg" alt="берег Байкала" class="element__image">
+          <div class="element__bottom">
+            <h2 class="element__title">Байкал</h2>
+            <button type="button" class="element__like" name="like" aria-label="Лайк">
             </button>
           </div>
         </li>
@@ -91,7 +93,7 @@
     <p class="footer__copyright">© 2022 Mesto Russia</p>
   </footer>
 
-<script src="./pages/index.js"></script>
+<script src="./scripts/index.js"></script>
 
 </body>
 </html>
