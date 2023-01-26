@@ -82,8 +82,10 @@ function createCard(name, link) {
   const card = template.content.querySelector('.element').cloneNode(true);
   const imageName = card.querySelector('.element__title');
   const imageLink = card.querySelector('.element__image');
+  const likeBtn = card.querySelector('.element__like');
   imageName.textContent = name;
   imageLink.setAttribute('src', link);
+  likeBtn.addEventListener('click', () => likeBtn.classList.toggle('element__like_active'));
   return card;
 }
 
