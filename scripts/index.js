@@ -43,6 +43,9 @@ const closeCardFormBtn = cardForm.querySelector('.popup__close-btn');
 const cardImageNameInput = cardForm.querySelector('.popup__input-text_type_name');
 const cardImageLinkInput = cardForm.querySelector('.popup__input-text_type_src');
 
+const template = document.querySelector('.template')
+const photoList = document.querySelector('.photo-grid__list');
+
 function submitProfileForm(evt) {
   evt.preventDefault();
   profileName.textContent = profileNameInput.value;
@@ -75,20 +78,6 @@ function switchPopup(popup) {
   popup.classList.toggle('popup_opened');
 }
 
-
-profileEditBtn.addEventListener ('click', openProfileForm);
-addCardBtn.addEventListener('click', switchPopup.bind(null, cardForm));
-
-closeProfileFormBtn.addEventListener ('click', switchPopup.bind(null, popupProfileForm));
-profileForm.addEventListener ('submit', submitProfileForm);
-
-closeCardFormBtn.addEventListener('click', closeCardForm);
-cardForm.addEventListener('submit', submitCardForm);
-
-
-const template = document.querySelector('.template')
-const photoList = document.querySelector('.photo-grid__list');
-
 function createCard(name, link) {
   const card = template.content.querySelector('.element').cloneNode(true);
   const imageName = card.querySelector('.element__title');
@@ -104,3 +93,11 @@ function renderCard(name, link) {
 
 initialCards.forEach(element => renderCard(element.name, element.link));
 
+profileEditBtn.addEventListener ('click', openProfileForm);
+addCardBtn.addEventListener('click', switchPopup.bind(null, cardForm));
+
+closeProfileFormBtn.addEventListener ('click', switchPopup.bind(null, popupProfileForm));
+profileForm.addEventListener ('submit', submitProfileForm);
+
+closeCardFormBtn.addEventListener('click', closeCardForm);
+cardForm.addEventListener('submit', submitCardForm);
