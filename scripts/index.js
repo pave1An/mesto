@@ -29,7 +29,7 @@ const profileElement = document.querySelector('.profile');
 const profileName = profileElement.querySelector('.profile__name');
 const profileJob = profileElement.querySelector('.profile__job');
 
-const popupProfileForm = document.querySelector('.popup__profile-form');
+const popupProfileForm = document.querySelector('.popup_type_profile-form');
 
 const profileForm = popupProfileForm.querySelector('.popup__form');
 const profileNameInput = profileForm.querySelector('.popup__input-text_type_name');
@@ -91,7 +91,7 @@ function renderCard(name, link, container) {
 
 initialCards.forEach(element => renderCard(element.name, element.link, photoList));
 
-const cardForm = document.querySelector('.popup__card-form');
+const cardForm = document.querySelector('.popup_type_card-form');
 const cardImageNameInput = cardForm.querySelector('.popup__input-text_type_name');
 const cardImageLinkInput = cardForm.querySelector('.popup__input-text_type_src');
 const addCardBtn = profileElement.querySelector('.profile__add-btn');
@@ -115,7 +115,7 @@ function closeCardForm() {
 const closeCardFormBtn = cardForm.querySelector('.popup__close-btn');
 closeCardFormBtn.addEventListener('click', closeCardForm);
 
-const popupImage = document.querySelector('.popup__image');
+const popupImage = document.querySelector('.popup_type_image');
 const closePopupImageBtn = popupImage.querySelector('.popup__close-btn');
 const popupImageView = popupImage.querySelector('.popup__image-view');
 const popupImageName = popupImage.querySelector('.popup__image-title');
