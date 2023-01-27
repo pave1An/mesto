@@ -43,11 +43,18 @@
         <h3 class="popup__title">Новое место</h3>
         <form action="#" class="popup__form" name="create-card">
           <fieldset class="popup__input">
-            <input type="text" class="popup__input-text popup__input-text_type_name" name="name" required="required" placeholder="Название">
+            <input type="text" class="popup__input-text popup__input-text_type_name" name="name" placeholder="Название">
             <input type="url" class="popup__input-text popup__input-text_type_src" name="src" required="required" placeholder="Ссылка на картинку">
           </fieldset>
           <button type="submit" class="popup__submit-btn" name="form-submit">Создать</button>
         </form>
+      </div>
+    </div>
+    <div class="popup popup__image">
+      <div class="popup__image-container">
+        <button type="button" class="popup__close-btn" name="form-close" aria-label="Закрыть"></button>
+        <img src="#" alt="" class="popup__image-view">
+        <p class="popup__image-title"></p>
       </div>
     </div>
     <section class="photo-grid">
