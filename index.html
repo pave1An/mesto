@@ -29,8 +29,8 @@
         <h3 class="popup__title">Редактировать профиль</h3>
         <form action="#" class="popup__form" name="edit-form">
           <fieldset class="popup__input">
-            <input type="text" class="popup__input-text popup__input-text_type_name" name="name" value="Жак-Ив Кусто">
-            <input type="text" class="popup__input-text popup__input-text_type_job" name="job" value="Исследователь океана">
+            <input type="text" class="popup__input-text popup__input-text_type_name" name="name" required="required" value="Жак-Ив Кусто">
+            <input type="text" class="popup__input-text popup__input-text_type_job" name="job" required="required" value="Исследователь океана">
           </fieldset>
           <button type="submit" class="popup__submit-btn" name="form-submit">Сохранить</button>
         </form>
@@ -43,7 +43,7 @@
         <h3 class="popup__title">Новое место</h3>
         <form action="#" class="popup__form" name="create-card">
           <fieldset class="popup__input">
-            <input type="text" class="popup__input-text popup__input-text_type_name" name="name" placeholder="Название">
+            <input type="text" class="popup__input-text popup__input-text_type_name" name="name" required="required" placeholder="Название">
             <input type="url" class="popup__input-text popup__input-text_type_src" name="src" required="required" placeholder="Ссылка на картинку">
           </fieldset>
           <button type="submit" class="popup__submit-btn" name="form-submit">Создать</button>
@@ -65,6 +65,7 @@
   <footer class="footer">
     <p class="footer__copyright">© 2022 Mesto Russia</p>
   </footer>
+
 <template class="template">
   <li class="element">
     <button type="button" class="element__trash" name="trash" aria-label="Удалить"></button>
@@ -75,6 +76,8 @@
     </div>
   </li>
 </template>
+
+<script src="./scripts/cards.js"></script>
 <script src="./scripts/index.js"></script>
 
 </body>
