@@ -28,11 +28,11 @@
         </button>
         <h3 class="popup__title">Редактировать профиль</h3>
         <form action="#" class="popup__form" name="edit-form">
-          <fieldset class="popup__input">
-            <input type="text" class="popup__input-text popup__input-text_type_name" name="name" required="required" value="Жак-Ив Кусто">
-            <input type="text" class="popup__input-text popup__input-text_type_job" name="job" required="required" value="Исследователь океана">
+          <fieldset class="popup__fieldset">
+            <input type="text" class="popup__input popup__input_type_name" name="name" required="required" value="Жак-Ив Кусто">
+            <input type="text" class="popup__input popup__input_type_job" name="job" required="required" value="Исследователь океана">
           </fieldset>
-          <button type="submit" class="popup__submit-btn" name="form-submit">Сохранить</button>
+          <button type="submit" class="popup__button" name="form-submit">Сохранить</button>
         </form>
       </div>
     </div>
@@ -42,11 +42,11 @@
         </button>
         <h3 class="popup__title">Новое место</h3>
         <form action="#" class="popup__form" name="create-card">
-          <fieldset class="popup__input">
-            <input type="text" class="popup__input-text popup__input-text_type_name" name="name" required="required" placeholder="Название">
-            <input type="url" class="popup__input-text popup__input-text_type_src" name="src" required="required" placeholder="Ссылка на картинку">
+          <fieldset class="popup__fieldset">
+            <input type="text" class="popup__input popup__input_type_name" name="name" required="required" placeholder="Название">
+            <input type="url" class="popup__input popup__input_type_src" name="src" required="required" placeholder="Ссылка на картинку">
           </fieldset>
-          <button type="submit" class="popup__submit-btn" name="form-submit">Создать</button>
+          <button type="submit" class="popup__button" name="form-submit">Создать</button>
         </form>
       </div>
     </div>
@@ -79,6 +79,6 @@
 
 <script src="./scripts/cards.js"></script>
 <script src="./scripts/index.js"></script>
-
+<script>src="./scripts/validate.js"</script>
 </body>
 </html>
