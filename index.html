@@ -27,10 +27,11 @@
         <button type="button" class="popup__close-btn" name="form-close" aria-label="Закрыть">
         </button>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <form action="#" class="popup__form" name="edit-form">
+        <form action="#" class="popup__form" name="edit-form" novalidate>
           <fieldset class="popup__fieldset">
 
             <input
+              id="name-input"
               type="text"
               class="popup__input popup__input_type_name"
               name="name"
@@ -39,10 +40,11 @@
               minlength="2"
               maxlength="40"
             >
-            <span class="popup__error"></span>
+            <span class="popup__error name-input-error"></span>
 
             <input
-            type="text"
+              id="job-input"
+              type="text"
               class="popup__input popup__input_type_job"
               name="job"
               value="Исследователь океана"
@@ -50,7 +52,7 @@
               minlength="2"
               maxlength="200"
             >
-            <span class="popup__error"></span>
+            <span class="popup__error job-input-error"></span>
 
           </fieldset>
           <button type="submit" class="popup__button" name="form-submit">Сохранить</button>
@@ -66,24 +68,26 @@
           <fieldset class="popup__fieldset">
 
             <input
+              id="title-input"
               type="text"
               class="popup__input popup__input_type_name"
-              name="name"
+              name="title"
               placeholder="Название"
               required="required"
               minlength="2"
               maxlength="40"
             >
-            <span class="popup__error"></span>
+            <span class="popup__error title-input-error"></span>
 
             <input
+              id="url-input"
               type="url"
               class="popup__input popup__input_type_src"
               name="image-url"
               placeholder="Ссылка на картинку"
               required="required"
             >
-            <span class="popup__error"></span>
+            <span class="popup__error url-input-error"></span>
 
             </fieldset>
           <button type="submit" class="popup__button" name="form-submit">Создать</button>
@@ -103,7 +107,7 @@
     </section>
   </main>
   <footer class="footer">
-    <p class="footer__copyright">© 2022 Mesto Russia</p>
+    <p class="footer__copyright">© 2023 Mesto Russia</p>
   </footer>
 
 <template class="template">
@@ -117,8 +121,8 @@
   </li>
 </template>
 
+<script src="./scripts/validate.js"></script>
 <script src="./scripts/cards.js"></script>
 <script src="./scripts/index.js"></script>
-<script>src="./scripts/validate.js"</script>
 </body>
 </html>

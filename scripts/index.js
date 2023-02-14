@@ -38,6 +38,8 @@ function closePopup(popup) {
 function openProfileForm() {
   profileNameInput.value = profileName.textContent;
   profileJobInput.value = profileJob.textContent;
+  hideInputError(profileForm, profileNameInput);
+  hideInputError(profileForm, profileJobInput);
   openPopup(popupProfileForm);
 }
 
@@ -46,6 +48,12 @@ function submitProfileForm(evt) {
   profileName.textContent = profileNameInput.value;
   profileJob.textContent = profileJobInput.value;
   closePopup(popupProfileForm);
+}
+
+function openCardForm() {
+  hideInputError(cardForm, cardImageNameInput);
+  hideInputError(cardForm, cardImageLinkInput);
+  openPopup(cardForm);
 }
 
 const removeCard = function (card) {
@@ -85,7 +93,6 @@ function submitCardForm(evt) {
   renderCard(cardData, photoList);
   closePopup(cardForm);
   evt.target.reset();
-  console.log(cardData);
 }
 
 function closeCardForm() {
@@ -109,7 +116,7 @@ initialCards.forEach(cardData => renderCard(cardData, photoList));
 cardForm.addEventListener('submit', submitCardForm);
 profileForm.addEventListener ('submit', submitProfileForm);
 profileEditBtn.addEventListener ('click', openProfileForm);
-closeProfileFormBtn.addEventListener ('click', closePopup.bind(null, popupProfileForm));
-addCardBtn.addEventListener('click', openPopup.bind(null, cardForm));
+closeProfileFormBtn.addEventListener ('click', () => closePopup(popupProfileForm));
+addCardBtn.addEventListener('click', openCardForm);
 closeCardFormBtn.addEventListener('click', closeCardForm);
 closePopupImageBtn.addEventListener('click', closePopup.bind(null, popupImage));
