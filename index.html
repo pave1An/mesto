@@ -36,9 +36,9 @@
               class="popup__input popup__input_type_name"
               name="name"
               value="Жак-Ив Кусто"
-              required="required"
               minlength="2"
               maxlength="40"
+              required="required"
             >
             <span class="popup__error name-input-error"></span>
 
@@ -48,9 +48,9 @@
               class="popup__input popup__input_type_job"
               name="job"
               value="Исследователь океана"
-              required="required"
               minlength="2"
               maxlength="200"
+              required="required"
             >
             <span class="popup__error job-input-error"></span>
 
@@ -64,7 +64,7 @@
         <button type="button" class="popup__close-btn" name="form-close" aria-label="Закрыть">
         </button>
         <h3 class="popup__title">Новое место</h3>
-        <form action="#" class="popup__form" name="create-card">
+        <form action="#" class="popup__form" name="create-card" novalidate>
           <fieldset class="popup__fieldset">
 
             <input
@@ -73,10 +73,10 @@
               class="popup__input popup__input_type_name"
               name="title"
               placeholder="Название"
-              required="required"
               minlength="2"
-              maxlength="40"
-            >
+              maxlength="30"
+              required="required"
+              >
             <span class="popup__error title-input-error"></span>
 
             <input

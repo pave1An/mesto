@@ -7,29 +7,29 @@ const validationConfig = {
   errorClass: 'popup__error_visible'
 }
 
-function showInputError(formElement, inputElement) {
+function showInputError(formElement, inputElement, validationConfig) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add(validationConfig.inputErrorClass);
   errorElement.classList.add(validationConfig.errorClass);
   errorElement.textContent = inputElement.validationMessage;
 }
 
-function hideInputError(formElement, inputElement) {
+function hideInputError(formElement, inputElement, validationConfig) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(validationConfig.inputErrorClass);
   errorElement.classList.remove(validationConfig.errorClass);
   errorElement.textContent = '';
 }
 
-function checkInputValidity(formElement, inputElement) {
+function checkInputValidity(formElement, inputElement, validationConfig) {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement);
+    showInputError(formElement, inputElement, validationConfig );
   } else {
-    hideInputError(formElement, inputElement);
+    hideInputError(formElement, inputElement, validationConfig);
   }
 }
 
-function toggleButtonState(formElement) {
+function toggleButtonState(formElement, validationConfig) {
   const buttonElement = formElement.querySelector(validationConfig.submitButtonSelector);
   if (!formElement.checkValidity()) {
     buttonElement.disabled = true;
@@ -40,12 +40,12 @@ function toggleButtonState(formElement) {
   }
 }
 
-function formValidation(formElement) {
+function setEventListeners(formElement, validationConfig) {
   const inputList = Array.from(formElement.querySelectorAll(validationConfig.inputSelector));
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', () => {
-      checkInputValidity(formElement, inputElement);
-      toggleButtonState(formElement);
+      checkInputValidity(formElement, inputElement, validationConfig);
+      toggleButtonState(formElement, validationConfig);
     });
   });
 }
@@ -53,8 +53,8 @@ function formValidation(formElement) {
 function enableValidation(validationConfig) {
   const formList = Array.from(document.querySelectorAll(validationConfig.formSelector));
   formList.forEach((formElement) => {
-    toggleButtonState(formElement);
-    formValidation(formElement);
+    toggleButtonState(formElement, validationConfig);
+    setEventListeners(formElement, validationConfig);
   });
 }
 

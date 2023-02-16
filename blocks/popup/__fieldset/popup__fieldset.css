@@ -1,5 +1,5 @@
 .popup__fieldset {
-  margin: 40px 0 0 0;
+  margin: 44px 0 0 0;
   padding: 0;
   display: block;
   border: none;
@@ -7,6 +7,6 @@
 
 @media screen and (max-width: 480px) {
   .popup__fieldset {
-    margin-top: 66px;
+    margin-top: 70px;
   }
 }
