@@ -27,12 +27,35 @@
         <button type="button" class="popup__close-btn" name="form-close" aria-label="Закрыть">
         </button>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <form action="#" class="popup__form" name="edit-form">
-          <fieldset class="popup__input">
-            <input type="text" class="popup__input-text popup__input-text_type_name" name="name" required="required" value="Жак-Ив Кусто">
-            <input type="text" class="popup__input-text popup__input-text_type_job" name="job" required="required" value="Исследователь океана">
+        <form action="#" class="popup__form" name="edit-form" novalidate>
+          <fieldset class="popup__fieldset">
+
+            <input
+              id="name-input"
+              type="text"
+              class="popup__input popup__input_type_name"
+              name="name"
+              value="Жак-Ив Кусто"
+              minlength="2"
+              maxlength="40"
+              required="required"
+            >
+            <span class="popup__error name-input-error"></span>
+
+            <input
+              id="job-input"
+              type="text"
+              class="popup__input popup__input_type_job"
+              name="job"
+              value="Исследователь океана"
+              minlength="2"
+              maxlength="200"
+              required="required"
+            >
+            <span class="popup__error job-input-error"></span>
+
           </fieldset>
-          <button type="submit" class="popup__submit-btn" name="form-submit">Сохранить</button>
+          <button type="submit" class="popup__button" name="form-submit">Сохранить</button>
         </form>
       </div>
     </div>
@@ -41,12 +64,33 @@
         <button type="button" class="popup__close-btn" name="form-close" aria-label="Закрыть">
         </button>
         <h3 class="popup__title">Новое место</h3>
-        <form action="#" class="popup__form" name="create-card">
-          <fieldset class="popup__input">
-            <input type="text" class="popup__input-text popup__input-text_type_name" name="name" required="required" placeholder="Название">
-            <input type="url" class="popup__input-text popup__input-text_type_src" name="src" required="required" placeholder="Ссылка на картинку">
-          </fieldset>
-          <button type="submit" class="popup__submit-btn" name="form-submit">Создать</button>
+        <form action="#" class="popup__form" name="create-card" novalidate>
+          <fieldset class="popup__fieldset">
+
+            <input
+              id="title-input"
+              type="text"
+              class="popup__input popup__input_type_name"
+              name="title"
+              placeholder="Название"
+              minlength="2"
+              maxlength="30"
+              required="required"
+              >
+            <span class="popup__error title-input-error"></span>
+
+            <input
+              id="url-input"
+              type="url"
+              class="popup__input popup__input_type_src"
+              name="image-url"
+              placeholder="Ссылка на картинку"
+              required="required"
+            >
+            <span class="popup__error url-input-error"></span>
+
+            </fieldset>
+          <button type="submit" class="popup__button" name="form-submit">Создать</button>
         </form>
       </div>
     </div>
@@ -63,7 +107,7 @@
     </section>
   </main>
   <footer class="footer">
-    <p class="footer__copyright">© 2022 Mesto Russia</p>
+    <p class="footer__copyright">© 2023 Mesto Russia</p>
   </footer>
 
 <template class="template">
@@ -77,8 +121,8 @@
   </li>
 </template>
 
+<script src="./scripts/validate.js"></script>
 <script src="./scripts/cards.js"></script>
 <script src="./scripts/index.js"></script>
-
 </body>
 </html>
