@@ -26,8 +26,6 @@ const popupImageCloseButton = popupImage.querySelector('.popup__close-btn');
 const popupImageView = popupImage.querySelector('.popup__image-view');
 const popupImageName = popupImage.querySelector('.popup__image-title');
 
-const popupList = Array.from(document.querySelectorAll('.popup'));
-
 function closePopupByClickOnOverlay(evt) {
   if (evt.target.classList.contains('popup_opened')) {
     closePopup(evt.target);
@@ -35,13 +33,10 @@ function closePopupByClickOnOverlay(evt) {
 }
 
 function closePopupByEscape(evt) {
-
-  const popup = popupList.find((popupListElement) => {
-    return popupListElement.classList.contains('popup_opened');
-  });
+const openedPopup = document.querySelector('.popup_opened')
 
   if(evt.key === 'Escape') {
-    closePopup(popup);
+    closePopup(openedPopup);
   }
 }
 
