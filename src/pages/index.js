@@ -1,3 +1,4 @@
+import './index.css';
 import initialCards from "../utils/cards.js";
 import validationConfig from "../utils/validationConfig.js";
 import Card from "../components/Card.js";
