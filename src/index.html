@@ -4,15 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Место</title>
-  <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body class="page">
   <header class="header">
-    <img class="header__logo" src="./images/header-logo.svg" alt="логотип Место">
+    <img class="header__logo" src="<%=require('./images/header-logo.svg')%>" alt="логотип Место">
   </header>
   <main class="content">
     <section class="profile">
-      <img class="profile__avatar" src="./images/profile-avatar.jpg" alt="аватар профиля">
+      <img class="profile__avatar" src="<%=require('./images/profile-avatar.jpg')%>" alt="аватар профиля">
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button type="button" class="profile__edit-btn" name="profile-edit" aria-label="Редактировать профиль">
@@ -71,7 +70,7 @@
               id="title-input"
               type="text"
               class="popup__input popup__input_type_name"
-              name="title"
+              name="name"
               placeholder="Название"
               minlength="2"
               maxlength="30"
@@ -83,7 +82,7 @@
               id="url-input"
               type="url"
               class="popup__input popup__input_type_src"
-              name="image-url"
+              name="link"
               placeholder="Ссылка на картинку"
               required="required"
             >
@@ -120,10 +119,5 @@
     </div>
   </li>
 </template>
-<script type="module" src="./scripts/cards.js"></script>
-<script type="module" src="./scripts/validationConfig.js"></script>
-<script type="module" src="./scripts/Card.js"></script>
-<script type="module" src="./scripts/FormValidator.js"></script>
-<script type="module" src="./scripts/index.js"></script>
 </body>
 </html>

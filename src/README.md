@@ -13,5 +13,6 @@
 * HTML
 * CSS
 * JavaScript
+* Webpack
 
 Посмотреть работу можно [здесь](https://pave1an.github.io/mesto/ "Перейти").
