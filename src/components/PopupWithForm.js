@@ -12,7 +12,7 @@ export default class PopupWithForm extends Popup {
     const userDataArray = Object.values(userData);
     this._inputs.forEach(item => {
       item.value = userDataArray.shift();
-    })
+    });
   }
 
   getInputValues() {
@@ -25,13 +25,13 @@ export default class PopupWithForm extends Popup {
     return inputsValues;
   }
 
-  setEventListeners() {
-    super.setEventListeners();
-    this._form.addEventListener('submit', this._submitForm);
-  }
-
   close() {
     super.close();
     this._form.reset();
+  }
+
+  setEventListeners() {
+    super.setEventListeners();
+    this._form.addEventListener('submit', this._submitForm);
   }
 }
