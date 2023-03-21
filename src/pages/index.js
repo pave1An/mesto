@@ -17,15 +17,18 @@ const popupImage = new PopupWithImage('.popup_type_image');
 const popupProfile = new PopupWithForm('.popup_type_profile-form', submitProfileForm);
 const popupCard = new PopupWithForm('.popup_type_card-form', submitCardForm);
 const userInfo = new UserInfo('.profile__name', '.profile__job');
-
-const defaultCards = new Section({
+const sectionPhotoGrid = new Section({
   data: initialCards,
   renderer: (item) => {
-    const card = new Card(item, '.template', handleCardClick);
-    const cardElement = card.generateCard();
-    defaultCards.addItem(cardElement);
+    sectionPhotoGrid.addItem(createCard(item));
   }
 }, '.photo-grid__list');
+
+function createCard(cardData) {
+  const card = new Card(cardData, '.template', handleCardClick);
+  const cardElement = card.generateCard();
+  return cardElement;
+}
 
 function openProfileForm() {
   popupProfile.setDefaultImputValues(userInfo.getUserInfo());
@@ -47,10 +50,7 @@ function openCardForm() {
 function submitCardForm(evt) {
   evt.preventDefault();
   const cardData = popupCard.getInputValues();
-  const newCard = new Section({},'.photo-grid__list');
-  const card = new Card(cardData, '.template', handleCardClick);
-  const cardElement = card.generateCard();
-  newCard.addItem(cardElement);
+  sectionPhotoGrid.addItem(createCard(cardData))
   popupCard.close();
   formValidators['card-form'].resetValidation();
 }
@@ -71,8 +71,14 @@ function enableValidation(config) {
   });
 }
 
-  defaultCards.renderItems();
-  enableValidation(validationConfig);
-
+function setEventListeners() {
+  popupImage.setEventListeners();
+  popupProfile.setEventListeners();
+  popupCard.setEventListeners();
   profileEditButton.addEventListener ('click', openProfileForm);
   popupCardFormOpenButton.addEventListener('click', openCardForm);
+}
+
+sectionPhotoGrid.renderItems();
+setEventListeners();
+enableValidation(validationConfig);
