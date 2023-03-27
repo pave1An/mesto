@@ -44,7 +44,9 @@
 @import "../blocks/element/__bottom/element__bottom.css";
 @import "../blocks/element/__title/element__title.css";
 @import "../blocks/element/__like/element__like.css";
+@import "../blocks/element/__like-area/element__like-area.css";
 @import "../blocks/element/__like/_active/element__like_active.css";
+@import "../blocks/element/__number-of-likes/element__number-of-likes.css";
 
 @import "../blocks/footer/footer.css";
 @import "../blocks/footer/__copyright/footer__copyright.css";
