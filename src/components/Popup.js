@@ -2,7 +2,9 @@ export default class Popup {
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector);
     this._buttonClose = this._popup.querySelector('.popup__close-btn');
+    this._acceptButton = this._popup.querySelector('.popup__button');
     this._closeEscBound = this._handleEscClose.bind(this);
+    this._initialAcceptButtonText = '';
   }
 
   open() {
@@ -24,6 +26,15 @@ export default class Popup {
   _handleOverlayClose(evt) {
     if (evt.target.classList.contains('popup_opened')) {
       this.close();
+    }
+  }
+
+  renderSaving(value) {
+    if(value) {
+      this._initialButtonText = this._acceptButton.textContent;
+      this._acceptButton.textContent = 'Сохранение...';
+    } else {
+      this._acceptButton.textContent = this._initialButtonText;
     }
   }
 
