@@ -5,8 +5,3 @@
   object-fit: cover;
 }
 
-@media screen and (max-width: 820px) {
-  .profile__avatar {
-    align-self: center;
-  }
-}
