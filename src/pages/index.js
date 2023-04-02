@@ -40,44 +40,72 @@ function renderUserInfo() {
   api.getUserInfo()
   .then(data => {
     userInfo.setUserInfo(data);
-      userInfo.setAvatar(data.avatar);
-    })
-    .catch(err => console.log(`Ошибка: ${err.status}`));
-  }
-
-  function addUserId(cards) {
-    return api.getUserInfo()
-  .then(userInfo => {
-    cards.forEach(item => {
-        item.userId = userInfo._id
-      })
-      return cards;
-    })
-  }
-
-function renderInitialCards() {
-  api.getInitialCards()
-  .then(cards => {
-    addUserId(cards)
-    .then(res => {
-      sectionPhotoGrid.renderItems(res);
-    })
-    .catch(err => console.log(`Ошибка: ${err.status}`));
+    userInfo.setAvatar(data.avatar);
   })
+  .catch(err => console.log(`Ошибка: ${err.status}`));
 }
 
-function submitAvatarForm(evt) {
-  evt.preventDefault();
-  popupAvatar.renderSaving(true);
-  api.patchAvatar(popupAvatar.getInputValues())
-  .then(res => api.handleFirstResponse(res))
+function addUserId(userInfo, cards) {
+  cards.forEach(item => {
+    item.userId = userInfo._id
+  })
+  return cards;
+}
+
+function renderInitialCards() {
+  Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([userInfo, cards]) => {
+    const cardsWithUserId = addUserId(userInfo, cards);
+    sectionPhotoGrid.renderItems(cardsWithUserId);
+  })
+  .catch(err => console.log(`Ошибка: ${err.status}`));
+}
+
+function openAvatarForm() {
+  formValidators['avatar-form'].resetValidation();
+  popupAvatar.open();
+}
+
+function openProfileForm() {
+  popupProfile.setDefaultImputValues(userInfo.getUserInfo());
+  formValidators['profile-form'].resetValidation();
+  popupProfile.open();
+}
+
+function openCardForm() {
+  formValidators['card-form'].resetValidation();
+  popupCard.open();
+}
+
+function submitAvatarForm(inputValues) {
+  return api.patchAvatar(inputValues)
   .then(data => {
     userInfo.setAvatar(data.avatar);
     popupAvatar.close();
   })
-  .catch(err => console.log(`Ошибка: ${err.status}`))
-  .finally(() => popupAvatar.renderSaving(false));
 };
+
+function submitProfileForm(inputValues) {
+  return api.patchUserInfo(inputValues)
+  .then(data => {
+    userInfo.setUserInfo(data)
+    popupProfile.close();
+  })
+}
+
+function submitCardForm(inputValues) {
+  return api.postCard(inputValues)
+  .then(res => {
+    res.userId = res.owner._id;
+    const card = createCard(res);
+    sectionPhotoGrid.addItem(card)
+    popupCard.close();
+  })
+}
+
+function handleCardClick(link, title) {
+  popupImage.open(link, title);
+}
 
 function handleTrashClick(card) {
   popupConfirmation.open();
@@ -114,52 +142,6 @@ function createCard(cardData) {
   return cardElement;
 }
 
-function openProfileForm() {
-  popupProfile.setDefaultImputValues(userInfo.getUserInfo());
-  formValidators['profile-form'].resetValidation();
-  popupProfile.open();
-}
-
-function submitProfileForm(evt) {
-  evt.preventDefault();
-  popupProfile.renderSaving(true);
-  api.patchUserInfo(popupProfile.getInputValues())
-  .then(res => api.handleFirstResponse(res))
-  .then(data => {
-    userInfo.setUserInfo(data)
-    popupProfile.close();
-  })
-  .catch(err => console.log(`Ошибка: ${err.status}`))
-  .finally(() => popupProfile.renderSaving(false));
-}
-
-function openCardForm() {
-  popupCard.open();
-  formValidators['card-form'].resetValidation();
-}
-
-function submitCardForm(evt) {
-  evt.preventDefault();
-  popupCard.renderSaving(true);
-  const cardData = popupCard.getInputValues();
-  api.postCard(cardData)
-  .then(res => {
-    res.userId = res.owner._id;
-    const card = createCard(res);
-    sectionPhotoGrid.addItem(card)
-  })
-  .catch(err => console.log(`Ошибка: ${err.status}`))
-  .finally(() => {
-    popupCard.renderSaving(false);
-    popupCard.close();
-    formValidators['card-form'].resetValidation();
-  });
-}
-
-function handleCardClick(link, title) {
-  popupImage.open(link, title);
-}
-
 function enableValidation(config) {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
 
@@ -173,7 +155,7 @@ function enableValidation(config) {
 }
 
 function setEventListeners() {
-  avatarEditButton.addEventListener('click', () => popupAvatar.open());
+  avatarEditButton.addEventListener('click', openAvatarForm);
   popupAvatar.setEventListeners();
   popupImage.setEventListeners();
   popupProfile.setEventListeners();
