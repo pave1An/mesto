@@ -15,7 +15,7 @@ export default class PopupWithForm extends Popup {
     });
   }
 
-  getInputValues() {
+  _getInputValues() {
     const inputsValues = {};
     this._inputs.forEach((input) => {
       const inputName = input.getAttribute('name');
@@ -32,6 +32,12 @@ export default class PopupWithForm extends Popup {
 
   setEventListeners() {
     super.setEventListeners();
-    this._form.addEventListener('submit', this._submitForm);
+    this._form.addEventListener('submit', (evt) => {
+      evt.preventDefault();
+      this.renderSaving(true)
+      this._submitForm(this._getInputValues())
+      .catch(err => console.log(`Ошибка: ${err.status}`))
+      .finally(() => this.renderSaving(false));
+    });
   }
 }

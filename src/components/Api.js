@@ -8,7 +8,7 @@ export default class Api {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject(`Ошибка ${res.status}`);
+    return Promise.reject(`Ошибка: ${res.status}`);
   }
 
 
@@ -25,7 +25,8 @@ export default class Api {
         name: data.name,
         about: data.about
       })
-    });
+    })
+    .then( res => this.handleFirstResponse(res));
   }
 
   patchAvatar({ avatar }) {
@@ -35,7 +36,8 @@ export default class Api {
       body: JSON.stringify({
         avatar: avatar
       })
-    });
+    })
+    .then( res => this.handleFirstResponse(res));
   }
 
   getInitialCards() {
